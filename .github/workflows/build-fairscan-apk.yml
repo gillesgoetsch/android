@@ -1,0 +1,21 @@
+# Local addition: builds the QA flavor of this branch (PR 17710 + master) on demand.
+name: Build FairScan QA APK
+on:
+  workflow_dispatch:
+  push:
+    branches: [fairscan-latest]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
+        with:
+          distribution: "temurin"
+          java-version: 25
+      - name: Build qaDebug
+        run: ./gradlew --no-daemon assembleQaDebug
+      - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+        with:
+          name: nextcloud-fairscan-qa-debug
+          path: app/build/outputs/apk/qa/debug/*.apk
