@@ -44,7 +44,7 @@ import com.nextcloud.utils.EditorUtils
 import com.owncloud.android.AbstractIT
 import com.owncloud.android.MainApp
 import com.owncloud.android.R
-import com.owncloud.android.authentication.EnforcedServer
+import com.owncloud.android.authentication.server.EnforcedServer
 import com.owncloud.android.datamodel.ArbitraryDataProvider
 import com.owncloud.android.datamodel.ArbitraryDataProviderImpl
 import com.owncloud.android.datamodel.FileDataStorageManager
@@ -76,7 +76,6 @@ import org.junit.Test
 import java.net.URI
 import java.util.function.Supplier
 
-@Suppress("TooManyFunctions")
 class DialogFragmentIT : AbstractIT() {
     private val testClassName = "com.owncloud.android.ui.dialog.DialogFragmentIT"
     private val serverUrl = "https://nextcloud.localhost"
